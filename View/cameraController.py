@@ -1,11 +1,12 @@
 import pygame
-
+from Model import saveMethods
 class Camera(pygame.sprite.Group):
 
-    def __init__(self, window):
+    def __init__(self, window, lv):
         super().__init__()
+        self.level = saveMethods.getLevel(lv)
         self.display_surface = window
-        self.ground_surf = pygame.image.load('./assets/maps/lv1/screen1.png').convert()
+        self.ground_surf = pygame.image.load(self.level['bg']).convert()
         self.ground_rect = self.ground_surf.get_rect(topleft=(0,0))
 
         #zoom

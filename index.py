@@ -1,6 +1,9 @@
-from View import cameraController
 import pygame
-from Controller import mainController, layersController, playerController, objectsController
+from View import cameraController
+from Controller import mainController
+import app
+
+
 running = True
 pygame.init()
 clock = pygame.time.Clock()
@@ -9,14 +12,14 @@ clock = pygame.time.Clock()
 window = mainController.mainController.start()
 pygame.display.update()
 
-#cria a camera e o player
-camera = cameraController.Camera(window)
+#pega o nível
+lv = app.getSaveLevel()
 
-#layersController.LayerController.createBg(1, camera)
-objectsController.drawObjects.drawObjects('tree', camera)
-objectsController.drawObjects.drawObjects('oldTree', camera)
-objectsController.drawObjects.drawObjects('groundColision', camera)
-player = playerController.Player((600,360), camera)
+#cria a camera e o player
+camera = cameraController.Camera(window, lv['lv'])
+
+app.createLevel(lv['lv'], camera)
+player = app.createPlayer(lv['lv'], camera)
 
 
 while running:

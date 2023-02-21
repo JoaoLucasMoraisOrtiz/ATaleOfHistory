@@ -1,0 +1,7 @@
+{
+    "1":{
+        "bg":"./assets/maps/church.png",
+        "playerPos": "200, 300",
+        "elements" : ["tree"],
+        "elemPos":{"tree": ["1, 2", "200, 400"]}
+    }}

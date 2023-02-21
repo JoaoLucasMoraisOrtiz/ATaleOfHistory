@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         #instancia a classe dos sprites
         self.spritesheet = Spritesheet.Spritesheet(pygame.image.load('./assets/player/boy/walkBack.png'))
         #seta a imagem do primeiro sprite
-        self.image = self.spritesheet.get_image(0, 18, 32, 0.8, (0, 0, 0))
+        self.image = self.spritesheet.get_image(0, 18, 32, 1, (0, 0, 0))
 
         #colocamos ela em alguma posição
         self.rect = self.image.get_rect(center=pos)
@@ -53,14 +53,14 @@ class Player(pygame.sprite.Sprite):
         if self.direction.x or self.direction.y != 0:
             self.image = self.spritesheet.update_frame()
         else:
-            self.image = self.spritesheet.get_image(0, 18, 32, 0.8, (0, 0, 0))
+            self.image = self.spritesheet.get_image(0, 18, 32, 1, (0, 0, 0))
 
         #chama a posição
         self.input()
 
         self.oldPosition = self.rect.center
 
-        #as condições abaixo certificam que o player não ultrapassará o layout
+        """ #as condições abaixo certificam que o player não ultrapassará o layout
         self.newPosition = self.rect.center + self.direction * self.speed
         if(self.newPosition[0] > 1888):
             self.newPosition[0] = 1888
@@ -70,10 +70,10 @@ class Player(pygame.sprite.Sprite):
         if(self.newPosition[1] > 1872):
                 self.newPosition[1] = 1872
         elif(self.newPosition[1] < 8):
-            self.newPosition[1] = 8
+            self.newPosition[1] = 8 """
 
         #atualiza a posição do player
-        self.rect.center = self.newPosition
+        self.rect.center = self.rect.center + self.direction * self.speed
     
     def colision(self, ob):
         hit = self.rect.colliderect(ob)

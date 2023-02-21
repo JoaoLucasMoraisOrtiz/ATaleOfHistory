@@ -25,10 +25,10 @@ class Spritesheet():
             if self.frame == 5:
                 self.frame = 0
             
-            return Spritesheet.get_image(self, self.frame, 18, 32, 0.8, (0, 0, 0))
+            return Spritesheet.get_image(self, self.frame, 18, 32, 1, (0, 0, 0))
         else:
             f = self.frame
-            return Spritesheet.get_image(self, self.frame, 18, 32, 0.8, (0,0,0))
+            return Spritesheet.get_image(self, self.frame, 18, 32, 1, (0,0,0))
 
 """ pygame.init()
 screen = pygame.display.set_mode((800, 600))
