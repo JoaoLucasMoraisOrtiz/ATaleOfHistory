@@ -1,7 +1,6 @@
 import pygame
 from Additional import Configurations
-from pytmx.util_pygame import load_pygame
-from View import Tile
+from View import Spritesheet
 
 class LayerController():
 
@@ -28,7 +27,7 @@ class LayerController():
             if hasattr(layer, 'data'):
                 for x, y, surf in layer.tiles():
                     pos = (x*16, y*16)
-                    Tile.Tile(pos = pos, surf = surf, groups=group)
+                    Spritesheet.Tile(pos = pos, surf = surf, groups=group)
 
     def createBg(lv, group):
         if lv == 1:

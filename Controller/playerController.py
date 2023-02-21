@@ -1,13 +1,16 @@
 import pygame
+from View import Spritesheet
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, group):
         super().__init__(group)
 
         self.type = 'player'
-
-        #importamos a imagem
-        self.image = pygame.image.load('./assets/char free/char_walk_left.gif')
+        
+        #instancia a classe dos sprites
+        self.spritesheet = Spritesheet.Spritesheet(pygame.image.load('./assets/player/boy/walkBack.png'))
+        #seta a imagem do primeiro sprite
+        self.image = self.spritesheet.get_image(0, 18, 32, 0.8, (0, 0, 0))
 
         #colocamos ela em alguma posição
         self.rect = self.image.get_rect(center=pos)
@@ -46,6 +49,12 @@ class Player(pygame.sprite.Sprite):
     #move o player efetivamente
     def update(self):
 
+        #controla a animação
+        if self.direction.x or self.direction.y != 0:
+            self.image = self.spritesheet.update_frame()
+        else:
+            self.image = self.spritesheet.get_image(0, 18, 32, 0.8, (0, 0, 0))
+
         #chama a posição
         self.input()
 
@@ -65,7 +74,6 @@ class Player(pygame.sprite.Sprite):
 
         #atualiza a posição do player
         self.rect.center = self.newPosition
-        print(self.rect.center)
     
     def colision(self, ob):
         hit = self.rect.colliderect(ob)

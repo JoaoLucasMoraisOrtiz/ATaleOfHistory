@@ -23,7 +23,7 @@ class Wall(pygame.sprite.Sprite):
 
         self.type = 'block'
         self.image = pygame.Surface((16, 16), pygame.SRCALPHA)
-        self.image = pygame.Surface((16, 16))
+        #self.image = pygame.Surface((16, 16))
         self.image.fill((255, 255, 0, 1))
         #self.image.convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
